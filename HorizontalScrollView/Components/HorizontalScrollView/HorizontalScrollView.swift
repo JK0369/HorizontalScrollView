@@ -30,8 +30,10 @@ class HorizontalScrollView: BaseScrollView {
         bounces = false
 
         addSubview(stackView)
-
-        dataSource = Mocks.getDataSource()
+        stackView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview() /// 이 값이 없으면 scroll 안되는 것 주의
+            make.top.bottom.equalToSuperview()
+        }
     }
 
     override func bind() {
@@ -49,11 +51,6 @@ class HorizontalScrollView: BaseScrollView {
             }
 
             stackView.addArrangedSubview(button)
-        }
-
-        stackView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview() /// 이 값이 없으면 scroll 안되는 것 주의
-            make.top.bottom.equalToSuperview()
         }
     }
 

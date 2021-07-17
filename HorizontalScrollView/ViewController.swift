@@ -20,6 +20,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         configure()
+
+        insertDataSource()
     }
 
     private func configure() {
@@ -30,5 +32,9 @@ class ViewController: UIViewController {
             make.height.equalTo(56)
         }
 
+    }
+
+    private func insertDataSource() {
+        horizontalScrollView.dataSource = Mocks.getDataSource()
     }
 }
